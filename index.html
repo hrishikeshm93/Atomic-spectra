@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atoms: Electron Orbits &amp; Atomic Spectra</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&family=Literata:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10302a;--card:#173d34;--ink:#f4f0df;--mut:#b4c8bb;--line:#4a7a69;--vio:#ffd95a;--soft:#21503f;--box:#3a3a1c;--wood:#7a4e28;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:70px;scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 20% 0,#18463b,transparent 55%),var(--bg);color:var(--ink);font:18px/1.65 Literata,Georgia,serif}
+h1,h2,h3,h4,.ui{font-family:'Patrick Hand','Comic Sans MS',sans-serif;font-weight:400}
+h1,h2{font-family:'Caveat Brush','Patrick Hand',cursive}
+.hero{background:#0c2621;border-bottom:16px solid var(--wood);color:var(--ink);padding:44px 20px 0;position:relative;overflow:hidden}
+.hero .in{max-width:1000px;margin:auto;display:flex;gap:24px;align-items:center;flex-wrap:wrap;padding-bottom:34px}
+.hero h1{font-size:clamp(38px,6vw,66px);line-height:1;margin:0 0 12px;color:#fff;letter-spacing:.5px}
+.hero p{margin:0 0 8px;max-width:520px;opacity:.92}.hero .t{flex:1 1 320px}
+.cred{display:inline-block;border:2px dashed var(--vio);color:var(--vio);padding:5px 16px;border-radius:8px;font:20px 'Patrick Hand',sans-serif;margin-top:10px}
+.rainbow{height:8px;margin:0 -20px;background:linear-gradient(90deg,#b388ff,#6db3ff,#4fd8e8,#7be495,#ffd95a,#ff9a3c,#ff6b6b)}
+nav{position:sticky;top:0;z-index:20;background:var(--wood);box-shadow:0 3px 0 #4d2f15;padding:8px 10px;padding-top:calc(8px + env(safe-area-inset-top,0px));display:flex;gap:6px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;color:#fff3d6;text-decoration:none;font:19px 'Patrick Hand',sans-serif;padding:4px 14px;border-radius:8px;background:#00000030}
+nav a:hover,nav a:focus-visible{background:var(--vio);color:#2a1a08;outline:none}
+main{max-width:1000px;margin:auto;padding:10px 16px 60px}
+.part{margin:48px 0 6px;display:flex;align-items:center;gap:14px}
+.part b{font:22px 'Patrick Hand';background:var(--vio);color:#2a1a08;border-radius:8px 14px 8px 14px;padding:3px 14px}
+.part.b b{background:#7fd6ff}.part h2{margin:0;font-size:clamp(32px,5vw,46px);color:#fff}
+section{background:var(--card);border:2px solid var(--line);border-radius:14px 20px 12px 22px;padding:22px;margin:18px 0}
+section h3{margin:0 0 10px;font-size:26px;color:var(--vio)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:center}
+.eq{font:italic 21px 'Cambria Math',Cambria,Georgia,serif;background:#0c2621;border:1.5px dashed var(--line);border-radius:10px;padding:12px 16px;margin:12px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;overflow-x:auto}
+.eq small{font:17px 'Patrick Hand';font-style:normal;color:var(--vio)}
+.fr{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 3px}.fr i{font-style:italic;padding:0 3px}.fr i:first-child{border-bottom:1.5px solid currentColor}
+sub,sup{font-size:.7em}
+.key{background:var(--box);border-left:5px solid var(--vio);border-radius:8px;padding:12px 16px;margin:14px 0}
+ul{padding-left:20px}li{margin:5px 0}
+button,select{font:19px 'Patrick Hand',sans-serif;border:0;border-radius:8px;padding:6px 16px;background:var(--vio);color:#2a1a08;cursor:pointer}
+select{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+button.g{background:var(--soft);color:var(--ink);border:1px solid var(--line)}button.on{background:#7fd6ff;color:#08262e}
+button:disabled{opacity:.5;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #fff}
+.step{border:1.5px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0;display:none;background:#12362e;animation:in .4s}
+.step.show{display:block}.step h4{margin:0 0 4px;font-size:20px;color:#7fd6ff}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.sim{background:#0c2621;border:2px dashed var(--vio)}
+.sim .tag{font:19px 'Patrick Hand';background:#ff7a59;color:#2a0e06;padding:1px 12px;border-radius:8px;display:inline-block;margin-bottom:8px}
+input[type=range]{width:100%;accent-color:var(--vio)}
+.read{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:12px}
+.read div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;font:16px 'Patrick Hand';color:var(--mut)}
+.read b{display:block;font:24px 'Patrick Hand';color:#fff}
+svg{max-width:100%;height:auto;display:block;margin:auto}svg text{font-family:'Patrick Hand',sans-serif;fill:var(--ink)}
+canvas{width:100%;border-radius:8px;display:block}
+table{width:100%;border-collapse:collapse;font-size:16px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{background:var(--soft);font:19px 'Patrick Hand';color:var(--vio)}
+.q{margin:14px 0}.q p{font-weight:600;margin:0 0 6px}.q button{margin:3px 6px 3px 0}.ok{background:#7be495!important;color:#06240f!important}.no{background:#ff7a59!important;color:#2a0e06!important}
+footer{text-align:center;padding:30px 16px 50px;color:var(--mut);font:19px 'Patrick Hand'}footer b{color:var(--vio)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+.orb{transform-origin:60px 60px;animation:sp 4s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+</style></head><body>
+<header class="hero"><div class="in">
+<div class="t"><div class="ui" style="font-weight:600;opacity:.8">Class 12 Physics · Chapter 12 · Atoms</div>
+<h1>Electron Orbits &amp; Atomic Spectra</h1>
+<p>See how a simple balance of forces explains why the electron stays in orbit, and how the light from hydrogen becomes a fingerprint of the atom.</p>
+<span class="cred">Created by Hrishikesh M (PGT Physics)</span></div>
+<svg width="190" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="44" fill="none" stroke="#fff6" stroke-dasharray="3 5"/><circle cx="60" cy="60" r="12" fill="#ffd60a"/><text x="60" y="64" font-size="11" text-anchor="middle" style="fill:#16213e;font-weight:400">+e</text><g class="orb"><circle cx="104" cy="60" r="6" fill="#4cc9f0"/></g></svg>
+</div><div class="rainbow"></div></header>
+<nav><a href="#orbits">Orbit model</a><a href="#derive">Derivation</a><a href="#orbsim">Simulation 1</a><a href="#spectra">Spectra</a><a href="#types">Types</a><a href="#hsim">Simulation 2</a><a href="#quiz">Quiz</a></nav>
+<main>
+<div class="part"><b>Part 1</b><h2>Electron orbits</h2></div>
+<section id="orbits"><h3>12.2.2 The Rutherford picture</h3>
+<div class="grid"><div>
+<p>Rutherford’s nuclear model uses <em>classical</em> physics. The atom is an electrically neutral sphere. At its centre sits a very small, massive, positively charged <b>nucleus</b>. Electrons revolve around it in their own <b>dynamically stable orbits</b>.</p>
+<ul><li>The Coulomb force of attraction <b>F<sub>e</sub></b> between electron and nucleus acts toward the nucleus.</li><li>This force supplies the required centripetal force <b>F<sub>c</sub></b>.</li><li>So for a stable orbit: <b>F<sub>e</sub> = F<sub>c</sub></b>.</li></ul></div>
+<svg viewBox="0 0 280 260" width="300" role="img" aria-label="Electron orbiting nucleus with force and velocity arrows"><defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#ff7a59"/></marker><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#7fd6ff"/></marker></defs>
+<circle cx="140" cy="130" r="95" fill="none" stroke="var(--mut)" stroke-dasharray="4 5"/><circle cx="140" cy="130" r="16" fill="#ffd95a"/><text x="140" y="135" text-anchor="middle" font-weight="400" style="fill:#16213e">+e</text>
+<circle cx="235" cy="130" r="9" fill="#6db3ff"/><text x="249" y="118" font-size="13">−e, m</text>
+<line x1="226" y1="130" x2="170" y2="130" stroke="#ff7a59" stroke-width="3" marker-end="url(#a1)"/><text x="172" y="150" font-size="13" style="fill:#ff7a59;font-weight:400">F = F</text>
+<line x1="235" y1="120" x2="235" y2="62" stroke="#7fd6ff" stroke-width="3" marker-end="url(#a2)"/><text x="244" y="82" font-size="13" style="fill:#7fd6ff;font-weight:400">v</text>
+<line x1="140" y1="130" x2="235" y2="130" stroke="var(--mut)" stroke-width="1" stroke-dasharray="2 3"/><text x="170" y="122" font-size="14" font-style="italic">r</text></svg></div></section>
+
+<section id="derive"><h3>Step-by-step derivation</h3>
+<p>Tap <b>Next step</b> to build the result one line at a time. The electron has charge −e and mass m; it moves at speed v in a circle of radius r (hydrogen: nucleus charge +e).</p>
+<div id="steps">
+<div class="step"><h4>Step 1 · Force of attraction (Coulomb’s law)</h4><div class="eq"><span>F<sub>e</sub> = <span class="fr"><i>1</i><i>4πε<sub>0</sub></i></span><span class="fr"><i>e²</i><i>r²</i></span></span></div></div>
+<div class="step"><h4>Step 2 · Centripetal force needed for circular motion</h4><div class="eq"><span>F<sub>c</sub> = <span class="fr"><i>mv²</i><i>r</i></span></span></div></div>
+<div class="step"><h4>Step 3 · Dynamically stable orbit: F<sub>e</sub> = F<sub>c</sub></h4><div class="eq"><span><span class="fr"><i>1</i><i>4πε<sub>0</sub></i></span><span class="fr"><i>e²</i><i>r²</i></span> = <span class="fr"><i>mv²</i><i>r</i></span></span><small>Eq. 12.2</small></div></div>
+<div class="step"><h4>Step 4 · Relation between orbit radius and speed</h4><p>Rearrange 12.2 for r:</p><div class="eq"><span>r = <span class="fr"><i>e²</i><i>4πε<sub>0</sub>mv²</i></span></span><small>Eq. 12.3</small></div></div>
+<div class="step"><h4>Step 5 · Kinetic energy</h4><p>Multiply 12.2 by r/2 so that ½mv² appears on the right:</p><div class="eq"><span>K = ½mv² = <span class="fr"><i>e²</i><i>8πε<sub>0</sub>r</i></span></span></div></div>
+<div class="step"><h4>Step 6 · Potential energy</h4><p>Electrostatic PE of the electron–nucleus pair (zero at infinity). The negative sign says the force points along −r, toward the nucleus:</p><div class="eq"><span>U = − <span class="fr"><i>e²</i><i>4πε<sub>0</sub>r</i></span></span></div></div>
+<div class="step"><h4>Step 7 · Total energy E = K + U</h4><div class="eq"><span>E = <span class="fr"><i>e²</i><i>8πε<sub>0</sub>r</i></span> − <span class="fr"><i>e²</i><i>4πε<sub>0</sub>r</i></span> = − <span class="fr"><i>e²</i><i>8πε<sub>0</sub>r</i></span></span><small>Eq. 12.4</small></div></div>
+<div class="step"><h4>Step 8 · What the minus sign means</h4><div class="key">E is <b>negative</b>, so the electron is <b>bound</b> to the nucleus. If E were positive, the electron would not follow a closed orbit. Also note: <b>U = −2K</b> and <b>E = −K</b>.</div></div>
+</div>
+<button id="nx">Next step</button> <button class="g" id="rs">Reset</button>
+<div class="key" style="margin-top:16px"><b>Think:</b> An accelerating charge should radiate energy and spiral into the nucleus, yet atoms are stable. Classical physics cannot explain this. The line spectra in Part 2 give the clue that leads to Bohr’s model.</div></section>
+
+<section class="sim" id="orbsim"><span class="tag">Simulation 1 · Hydrogen orbit</span><h3>Change the radius, watch the energy</h3>
+<div class="grid"><svg viewBox="0 0 300 300" width="340" id="osvg" role="img" aria-label="Orbit simulation"><defs><marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#ff7a59"/></marker><marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0L8,4L0,8z" fill="#7fd6ff"/></marker></defs>
+<circle id="orc" cx="150" cy="150" r="60" fill="none" stroke="var(--mut)" stroke-dasharray="4 5"/><circle cx="150" cy="150" r="13" fill="#ffd95a"/><text x="150" y="154" text-anchor="middle" font-size="11" font-weight="400" style="fill:#16213e">+e</text>
+<line id="fc" stroke="#ff7a59" stroke-width="3" marker-end="url(#m1)"/><line id="vv" stroke="#7fd6ff" stroke-width="3" marker-end="url(#m2)"/><circle id="el" r="8" fill="#6db3ff"/>
+<text x="10" y="288" font-size="12" style="fill:#ff7a59;font-weight:400">F (to centre)</text><text x="120" y="288" font-size="12" style="fill:#7fd6ff;font-weight:400">v (tangent)</text></svg>
+<div><label class="ui" for="rr"><b>Orbit radius r</b> = <span id="rv"></span> nm</label>
+<input type="range" id="rr" min="0.03" max="0.30" step="0.001" value="0.053"><div style="display:flex;gap:8px;margin:8px 0"><button class="g" id="rb">Set r = 0.053 nm</button><button class="g" id="pp">Pause</button></div>
+<svg viewBox="0 0 300 118" id="bars" role="img" aria-label="Energy bars"><line x1="150" y1="4" x2="150" y2="112" stroke="var(--mut)"/>
+<text x="4" y="22" font-size="12">K</text><rect id="bk" x="150" y="8" height="20" fill="#7fd6ff"/><text x="4" y="62" font-size="12">U</text><rect id="bu" x="150" y="48" height="20" fill="#ff7a59"/><text x="4" y="102" font-size="12">E</text><rect id="be" x="150" y="88" height="20" fill="#c3a6ff"/></svg></div></div>
+<div class="read"><div>Speed v<b id="o1"></b></div><div>Force F<b id="o2"></b></div><div>Kinetic K<b id="o3"></b></div><div>Potential U<b id="o4"></b></div><div>Total E<b id="o5"></b></div></div>
+<p class="ui" style="color:var(--mut);font-size:14px;margin-bottom:0">Try it: shrink r. The electron speeds up, K rises, but U falls twice as fast, so E becomes more negative (more tightly bound). At 0.053 nm, E ≈ −13.6 eV.</p></section>
+
+<div class="part b"><b>Part 2</b><h2>Atomic spectra</h2></div>
+<section id="spectra"><h3>12.3 What is an atomic spectrum?</h3>
+<div class="grid"><div><ul>
+<li>Every element has a <b>characteristic spectrum</b> of radiation that it emits.</li>
+<li>When an atomic gas or vapour at <b>low pressure</b> is excited, usually by passing an electric current through it, the emitted light has only <b>specific wavelengths</b>.</li>
+<li>This is the <b>emission line spectrum</b>: bright lines on a dark background.</li>
+<li>Because each element has its own set of lines, the spectrum works like a <b>fingerprint</b> to identify the gas.</li>
+<li>Pass white light through a gas and analyse the transmitted light: dark lines appear at <i>exactly</i> the wavelengths the gas emits. This is the <b>absorption spectrum</b>.</li></ul></div>
+<div class="key"><b>Spectrum</b> = light split by wavelength (using a prism or grating in a spectrometer). The pattern tells us what the source is made of.</div></div></section>
+
+<section id="types"><h3>Three kinds of spectra: try each</h3>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px" id="tb"><button data-m="c" class="on">Continuous</button><button data-m="e" class="g">Emission line</button><button data-m="a" class="g">Absorption</button></div>
+<svg viewBox="0 0 640 150" id="app" role="img" aria-label="Spectrometer set-up">
+<g id="gb"><circle cx="50" cy="75" r="22" fill="#ffd60a"/><text x="50" y="118" text-anchor="middle" font-size="13">White light</text></g>
+<line id="ln1" x1="74" y1="75" x2="250" y2="75" stroke="#ffd60a" stroke-width="5" opacity=".7"/>
+<g id="gt"><rect x="250" y="45" width="130" height="60" rx="14" id="tube" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="315" y="124" text-anchor="middle" font-size="13" id="tl">Hydrogen gas</text></g>
+<g id="gv"><text x="315" y="30" text-anchor="middle" font-size="13" style="fill:#ff7a59;font-weight:400">⚡ high voltage</text></g>
+<line id="ln2" x1="380" y1="75" x2="470" y2="75" stroke="#ffd60a" stroke-width="5" opacity=".7"/>
+<polygon points="470,45 470,105 520,75" fill="#4cc9f055" stroke="var(--ink)" stroke-width="2"/><text x="485" y="124" font-size="13">Prism</text>
+<rect x="580" y="25" width="16" height="100" rx="4" fill="#222" stroke="var(--mut)"/><text x="588" y="142" text-anchor="middle" font-size="13">Screen</text>
+<path d="M520 75 L580 40 M520 75 L580 75 M520 75 L580 110" stroke="#4cc9f0" stroke-width="2" opacity=".6"/></svg>
+<canvas id="sc" width="760" height="100"></canvas>
+<p id="sd" style="margin-bottom:0"></p>
+<table style="margin-top:14px"><tr><th>Type</th><th>Source</th><th>Appearance</th></tr><tr><td>Continuous</td><td>Hot solid / white light</td><td>All colours, no gaps</td></tr><tr><td>Emission line</td><td>Excited low-pressure gas</td><td>Bright lines on dark</td></tr><tr><td>Absorption</td><td>White light through a gas</td><td>Dark lines on a continuous band</td></tr></table></section>
+
+<section class="sim" id="hsim"><span class="tag">Simulation 2 · Hydrogen spectrum</span><h3>Build the lines of Fig. 12.5</h3>
+<p>The wavelengths of hydrogen fall into <b>series</b>. Each series ends on one lower level n<sub>f</sub>. Pick a series, then choose the upper level to see one line.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px" id="sb"><button data-n="1" class="g">Lyman (UV)</button><button data-n="2" class="on">Balmer (visible)</button><button data-n="3" class="g">Paschen (IR)</button></div>
+<div class="ui" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">Electron jumps from n = <select id="nu" aria-label="Upper level"></select> down to n = <b id="nf"></b></div>
+<div class="grid" style="margin-top:14px"><svg viewBox="0 0 300 310" id="lv" role="img" aria-label="Energy levels"></svg>
+<div><svg viewBox="0 0 1000 150" id="st" role="img" aria-label="Hydrogen emission lines on a wavelength axis"></svg>
+<div class="read"><div>Transition<b id="h1"></b></div><div>Energy released<b id="h2"></b></div><div>Wavelength<b id="h3"></b></div><div>Region<b id="h4"></b></div></div></div></div>
+<p class="ui" style="color:var(--mut);font-size:14px;margin-bottom:0">Wavelengths come from 1/λ = R(1/n<sub>f</sub>² − 1/n<sub>i</sub>²) with R = 1.097 × 10⁷ m⁻¹ (a preview; you will derive this with Bohr’s model). Energy levels: E<sub>n</sub> = −13.6 eV / n². Tap any line on the strip to select it.</p></section>
+<section><h3>Key takeaways</h3><ul>
+<li>For a stable orbit, Coulomb force = centripetal force: e²/(4πε₀r²) = mv²/r.</li><li>K = e²/(8πε₀r), U = −e²/(4πε₀r), E = −e²/(8πε₀r) &lt; 0, so the electron is bound.</li>
+<li>Atoms emit only specific wavelengths: the emission line spectrum, a fingerprint of the element.</li><li>Absorption dark lines sit at the same wavelengths as the emission lines.</li>
+<li>Hydrogen lines form series: Lyman (UV), Balmer (visible), Paschen (infrared).</li></ul></section>
+<section id="quiz"><h3>Check your understanding</h3><div id="qz"></div></section>
+</main>
+<footer>Interactive ebook · NCERT Class 12 Physics, Atoms<br>Created by <b>Hrishikesh M (PGT Physics)</b></footer>
+<script>
+const $=s=>document.querySelector(s),NS='http://www.w3.org/2000/svg';
+// Derivation
+const st=[...document.querySelectorAll('.step')];let k=0;
+function sh(){st.forEach((s,i)=>s.classList.toggle('show',i<k));$('#nx').disabled=k>=st.length;$('#nx').textContent=k>=st.length?'Done':'Next step'}
+$('#nx').onclick=()=>{k++;sh()};$('#rs').onclick=()=>{k=0;sh()};k=1;sh();
+// Orbit sim
+const e=1.602e-19,e0=8.854e-12,m=9.109e-31,kc=e*e/(4*Math.PI*e0);let th=0,paused=false;
+function orb(){const r=+$('#rr').value,R=r*1e-9,v=Math.sqrt(kc/(m*R)),K=.5*m*v*v/e,F=kc/R/R;
+$('#rv').textContent=r.toFixed(3);$('#o1').textContent=(v/1e6).toFixed(2)+' ×10⁶ m/s';$('#o2').textContent=(F*1e8).toFixed(1)+' ×10⁻⁸ N';
+$('#o3').textContent=K.toFixed(2)+' eV';$('#o4').textContent=(-2*K).toFixed(2)+' eV';$('#o5').textContent=(-K).toFixed(2)+' eV';
+const bar=(id,val)=>{const w=Math.abs(val)/50*140,b=$(id);b.setAttribute('width',w);b.setAttribute('x',val<0?150-w:150)};bar('#bk',K);bar('#bu',-2*K);bar('#be',-K);
+const px=r/.30*125;$('#orc').setAttribute('r',px);return px}
+let px=orb();$('#rr').oninput=()=>px=orb();$('#rb').onclick=()=>{$('#rr').value=.053;px=orb()};
+$('#pp').onclick=function(){paused=!paused;this.textContent=paused?'Play':'Pause'};
+function fr(){const r=+$('#rr').value;if(!paused)th+=.035*Math.pow(.0529/r,1.5);const c=Math.cos(th),s=Math.sin(th),x=150+px*c,y=150+px*s,el=$('#el');
+el.setAttribute('cx',x);el.setAttribute('cy',y);const fc=$('#fc'),vv=$('#vv');
+fc.setAttribute('x1',x-10*c);fc.setAttribute('y1',y-10*s);fc.setAttribute('x2',x-42*c);fc.setAttribute('y2',y-42*s);
+vv.setAttribute('x1',x-10*s);vv.setAttribute('y1',y+10*c);vv.setAttribute('x2',x-42*s);vv.setAttribute('y2',y+42*c);requestAnimationFrame(fr)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)fr();else{th=.5;paused=true}
+// colours
+function rgb(l){let r=0,g=0,b=0;if(l<440){r=-(l-440)/60;b=1}else if(l<490){g=(l-440)/50;b=1}else if(l<510){g=1;b=-(l-510)/20}else if(l<580){r=(l-510)/70;g=1}else if(l<645){r=1;g=-(l-645)/65}else r=1;
+const f=l<420?.3+.7*(l-380)/40:l>700?.3+.7*(750-l)/50:1;return`rgb(${[r,g,b].map(x=>Math.round(255*Math.pow(x*f,.8))).join()})`}
+// spectra types
+const L=[[410,'410'],[434,'434'],[486,'486'],[656,'656']],cv=$('#sc'),cx=cv.getContext('2d'),X=l=>(l-380)/370*760;
+const D={c:['No gas in the path: a hot source gives all wavelengths, a smooth band of colours.','Continuous'],e:['An excited gas (electric current) glows. Only a few wavelengths appear: bright lines on a dark background. These four are hydrogen’s visible Balmer lines.','Emission'],a:['White light passes through cool hydrogen. The gas removes exactly the wavelengths it would emit, leaving dark lines at 410, 434, 486 and 656 nm.','Absorption']};
+function sp(md){cx.clearRect(0,0,760,100);cx.fillStyle='#000';cx.fillRect(0,0,760,64);
+if(md!='e')for(let x=0;x<760;x++){cx.fillStyle=rgb(380+x/760*370);cx.fillRect(x,0,1,64)}
+if(md!='c')L.forEach(([l])=>{const x=X(l);if(md=='e'){cx.fillStyle=rgb(l);cx.shadowColor=rgb(l);cx.shadowBlur=12;cx.fillRect(x-2,0,4,64);cx.shadowBlur=0}else{cx.fillStyle='#000';cx.fillRect(x-2,0,4,64)}});
+cx.fillStyle=getComputedStyle(document.body).color;cx.font='14px sans-serif';cx.textAlign='center';
+if(md!='c')L.forEach(([l,t])=>cx.fillText(t+' nm',Math.min(Math.max(X(l),24),736),84));else[400,500,600,700].forEach(l=>cx.fillText(l+' nm',X(l),84));
+const on=md!='c';$('#gb').style.display=md=='e'?'none':'';$('#ln1').style.display=md=='e'?'none':'';$('#gt').style.display=on?'':'none';$('#gv').style.display=md=='e'?'':'none';
+$('#tube').setAttribute('fill',md=='e'?'#f78fb855':'none');$('#sd').textContent=D[md][0]}
+document.querySelectorAll('#tb button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tb button').forEach(x=>x.className='g');b.className='on';sp(b.dataset.m)});sp('c');
+matchMedia('(prefers-color-scheme:dark)').onchange=()=>sp(document.querySelector('#tb .on').dataset.m);
+// Hydrogen sim
+const col={1:'#c3a6ff',2:'#7fd6ff',3:'#ff7a59'},nm=(f,i)=>1e9/(1.097e7*(1/f/f-1/i/i)),nmN={1:'Lyman',2:'Balmer',3:'Paschen'};let nfv=2,niv=3;
+const A=(t,o,p)=>{const n=document.createElementNS(NS,t);for(const a in o)n.setAttribute(a,o[a]);if(p)p.appendChild(n);return n};
+function hs(){const lv=$('#lv'),s=$('#st');lv.innerHTML='';s.innerHTML='';const Y=n=>30+260/(n*n);
+A('line',{x1:40,x2:200,y1:30,y2:30,stroke:'var(--mut)','stroke-dasharray':'3 3'},lv);A('text',{x:206,y:34,'font-size':12},lv).textContent='n = ∞ (0 eV)';
+for(let n=1;n<=6;n++){A('line',{x1:40,x2:200,y1:Y(n),y2:Y(n),stroke:'var(--ink)','stroke-width':2.5},lv);A('text',{x:206,y:Y(n)+4,'font-size':12},lv).textContent=`n=${n}  ${(-13.6/n/n).toFixed(2)} eV`}
+for(let n=nfv+1;n<=6;n++){const sel=n==niv,x=60+(n-nfv)*20;A('line',{x1:x,x2:x,y1:Y(n),y2:Y(nfv)-4,stroke:col[nfv],'stroke-width':sel?4:1.5,opacity:sel?1:.35},lv)}
+A('text',{x:150,y:12,'font-size':12,'text-anchor':'middle'},lv).textContent='Energy levels (arrows = emitted photons)';
+A('line',{x1:20,x2:980,y1:100,y2:100,stroke:'var(--mut)'},s);const X2=l=>l/1900*960+20;
+for(let t=0;t<=1800;t+=300){A('text',{x:X2(t),y:122,'font-size':20,'text-anchor':'middle'},s).textContent=t;A('line',{x1:X2(t),x2:X2(t),y1:100,y2:106,stroke:'var(--mut)'},s)}
+A('text',{x:500,y:146,'font-size':20,'text-anchor':'middle'},s).textContent='Wavelength λ (nm)';
+for(let f=1;f<=3;f++){for(let i=f+1;i<=14;i++){const l=nm(f,i);if(l>1900)continue;const a=f==nfv,sel=a&&i==niv;
+const ln=A('line',{x1:X2(l),x2:X2(l),y1:sel?10:30,y2:100,stroke:a?(l>=400&&l<=700?rgb(l):col[f]):'var(--mut)','stroke-width':sel?6:3,opacity:a?1:.35,style:'cursor:pointer'},s);
+const hit=A('line',{x1:X2(l),x2:X2(l),y1:5,y2:100,stroke:'transparent','stroke-width':16,style:'cursor:pointer'},s);hit.onclick=()=>{nfv=f;niv=i>8?8:i;sync()}}
+A('text',{x:X2(nm(f,f+1)>1900?1875:nm(f,f+1))-0,y:20,'font-size':20,'text-anchor':'middle',style:'font-weight:400;fill:'+col[f]},s).textContent=nmN[f]}
+const l=nm(nfv,niv),E=13.6*(1/nfv/nfv-1/niv/niv);$('#h1').textContent=`n=${niv} → ${nfv}`;$('#h2').textContent=E.toFixed(2)+' eV';$('#h3').textContent=l.toFixed(1)+' nm';
+$('#h4').textContent=l<400?'Ultraviolet':l>700?'Infrared':'Visible'}
+function sync(){$('#nf').textContent=nfv;const o=$('#nu');o.innerHTML='';for(let i=nfv+1;i<=8;i++)o.add(new Option(i,i));if(niv<=nfv)niv=nfv+1;o.value=niv;
+document.querySelectorAll('#sb button').forEach(b=>b.className=+b.dataset.n==nfv?'on':'g');hs()}
+$('#nu').onchange=e=>{niv=+e.target.value;hs()};
+document.querySelectorAll('#sb button').forEach(b=>b.onclick=()=>{nfv=+b.dataset.n;niv=nfv+1;sync()});sync();
+// Quiz
+const Q=[['For a stable circular orbit of the electron in hydrogen, the centripetal force is provided by…',['Gravitational force','Electrostatic attraction','Magnetic force','Nuclear force'],1],
+['The total energy of the electron in a hydrogen atom is negative. This means the electron is…',['Free','Bound to the nucleus','At rest','Radiating'],1],
+['If kinetic energy of the orbiting electron is K, its potential energy is…',['K','−K','−2K','2K'],2],
+['Bright lines on a dark background form a…',['Continuous spectrum','Absorption spectrum','Emission line spectrum','Rainbow'],2],
+['Which hydrogen series lies in the visible region?',['Lyman','Balmer','Paschen','None'],1]];
+Q.forEach((q,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML=`<p>${i+1}. ${q[0]}</p>`;q[1].forEach((t,j)=>{const b=document.createElement('button');b.className='g';b.textContent=t;b.onclick=()=>{d.querySelectorAll('button').forEach(x=>x.className='g');b.className=j==q[2]?'ok':'no'};d.appendChild(b)});$('#qz').appendChild(d)});
+</script></body></html>
